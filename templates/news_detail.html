@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ news.title }} | Legend News</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #ffffff;
+    color: #000;
+}
+
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+    background: #000;
+    color: white;
+    padding: 16px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 800;
+}
+
+nav a {
+    margin-left: 24px;
+    text-decoration: none;
+    color: #ccc;
+}
+
+nav a:hover {
+    color: white;
+}
+
+/* ARTICLE */
+
+.article {
+    padding: 60px 6%;
+    max-width: 900px;
+    margin: auto;
+}
+
+.article h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.meta {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.article-img {
+    width: 100%;
+    max-height: 420px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+}
+
+.article-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.article-content {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #111;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 60px;
+    padding: 40px;
+    background: #000;
+    color: #bbb;
+    text-align: center;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Legend News</div>
+    <nav>
+        <a href="{% url 'home' %}">Главная</a>
+        <a href="#">Мир</a>
+        <a href="#">Технологии</a>
+        <a href="#">Спорт</a>
+        <a href="{% url 'contacts' %}">Контакты</a>
+    </nav>
+</header>
+
+<article class="article">
+
+    <h1>{{ news.title }}</h1>
+
+    <div class="meta">
+        {{ news.created_at|date:"d.m.Y" }} • 👁 {{ news.views }}
+    </div>
+
+    {% if news.image %}
+    <div class="article-img">
+        <img src="{{ news.image.url }}" alt="{{ news.title }}">
+    </div>
+    {% endif %}
+
+    <div class="article-content">
+        {{ news.content|linebreaks }}
+    </div>
+
+</article>
+
+<footer>
+© 2026 Legend News — Все права защищены
+</footer>
+
+</body>
+</html>
