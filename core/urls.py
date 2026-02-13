@@ -5,11 +5,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('news.urls'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-'''127.0.0.1:8000/news_list/'''
