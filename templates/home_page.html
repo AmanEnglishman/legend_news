@@ -197,6 +197,8 @@ footer {
 <div class="news-grid">
 
 {% for item in news %}
+
+<a href="{% url 'news_detail' item.id %}" style="text-decoration:none; color:inherit;">
 <div class="card">
 
     <div class="card-img">
@@ -207,6 +209,7 @@ footer {
 
     <div class="card-content">
         <h3>{{ item.title }}</h3>
+
         <p>
             {{ item.content|truncatewords:12 }}
         </p>
@@ -217,10 +220,12 @@ footer {
     </div>
 
 </div>
+</a>
 
 {% empty %}
 <p>Новостей пока нет</p>
 {% endfor %}
+
 
 </div>
 
