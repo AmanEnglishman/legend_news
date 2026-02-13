@@ -1,0 +1,31 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+
+    <div class="news-container">
+
+        {% for i in news %}
+            <div class="news-item">
+
+                <h3>{{ i.title }}</h3>
+                <p>{{ i.content }}</p>
+                <small>{{ i.created_at }}</small>
+
+                {% if i.image %}
+                    <img src="{{ i.image.url }}" alt="news image">
+                {% endif %}
+
+            </div>
+
+        {% empty %}
+            <p>Новостей пока нет</p>
+        {% endfor %}
+
+    </div>
+
+    </body>
+    </html>

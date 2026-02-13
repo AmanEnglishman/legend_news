@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legend News</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #ffffff;
+    color: #000;
+}
+
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+    background: #000;
+    color: white;
+    padding: 16px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+nav a {
+    margin-left: 24px;
+    text-decoration: none;
+    color: #ccc;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: white;
+}
+
+/* HERO */
+
+.hero {
+    padding: 70px 6%;
+    border-bottom: 2px solid #000;
+}
+
+.tag {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: #444;
+    margin-bottom: 25px;
+    max-width: 650px;
+}
+
+.btn {
+    padding: 12px 24px;
+    background: #000;
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: #333;
+}
+
+/* SECTION */
+
+.section {
+    padding: 60px 6%;
+}
+
+.section h2 {
+    font-size: 30px;
+    margin-bottom: 25px;
+    border-left: 6px solid #000;
+    padding-left: 12px;
+}
+
+/* GRID */
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 24px;
+}
+
+.card {
+    border: 1px solid #ddd;
+    background: white;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.card:hover {
+    border-color: #000;
+}
+
+.card-img {
+    height: 160px;
+    background: #eee;
+}
+
+.card-content {
+    padding: 18px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #555;
+    font-size: 14px;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 60px;
+    padding: 40px;
+    background: #000;
+    color: #bbb;
+    text-align: center;
+}
+
+/* ANIMATION */
+
+.card, .hero {
+    animation: fadeUp 0.7s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    from {
+        transform: translateY(15px);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">Legend News</div>
+<nav>
+<a href="#">Главная</a>
+<a href="#">Мир</a>
+<a href="#">Технологии</a>
+<a href="#">Спорт</a>
+<a href="#">Контакты</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="tag">Главная новость</div>
+<h1>Цифровая эпоха меняет формат новостей и журналистики</h1>
+<p>Legend News предоставляет оперативную информацию, аналитические материалы и актуальные события в строгом и современном формате.</p>
+<button class="btn">Читать полностью</button>
+</section>
+
+<section class="section">
+<h2>Последние новости</h2>
+
+<div class="news-grid">
+
+<div class="card">
+<div class="card-img"></div>
+<div class="card-content">
+<h3>Искусственный интеллект и общество</h3>
+<p>Как технологии влияют на повседневную жизнь.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img"></div>
+<div class="card-content">
+<h3>Космические исследования</h3>
+<p>Новые этапы освоения Вселенной.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img"></div>
+<div class="card-content">
+<h3>Экономические прогнозы</h3>
+<p>Перспективы мировых рынков.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img"></div>
+<div class="card-content">
+<h3>Спортивные события</h3>
+<p>Главные результаты недели.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<footer>
+© 2026 Legend News — Все права защищены
+</footer>
+
+</body>
+</html>
