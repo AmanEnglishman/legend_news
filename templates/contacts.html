@@ -194,14 +194,23 @@ footer {
 <p>Мы открыты для сотрудничества, новостных материалов и предложений.</p>
 </div>
 
-<form>
-<h3>Отправить сообщение</h3>
+<form method="POST">
+    {% csrf_token %}
 
-<input type="text" placeholder="Ваше имя" required>
-<input type="email" placeholder="Email" required>
-<textarea rows="5" placeholder="Ваше сообщение..." required></textarea>
+    <h3>Отправить сообщение</h3>
 
-<button type="submit">Отправить</button>
+    {{ form.name }}
+    {{ form.email }}
+    {{ form.message }}
+
+    <button type="submit">Отправить</button>
+
+    {% if success %}
+        <p style="margin-top:15px; color:green;">
+            Сообщение успешно отправлено!
+        </p>
+    {% endif %}
+
 </form>
 
 </div>
