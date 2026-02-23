@@ -3,8 +3,8 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
 
-from .models import News, Category
-from .forms import ContactForm
+from .models import News, Category, Comments
+from .forms import ContactForm, CommentForm
 
 def home(request):
     news = News.objects.order_by('-created_at')
@@ -46,6 +46,8 @@ Email - {email}
 
     return render(request, 'contacts.html', {'form': form, 'success': success})
 
+from django.shortcuts import redirect
+
 def news_detail(request, news_id):
     news = News.objects.get(id=news_id)
     News.objects.filter(id=news_id).update(views=F('views') + 1)
@@ -53,7 +55,17 @@ def news_detail(request, news_id):
 
     comments = news.comments.filter(is_active=True)
 
-    return render(request, 'news_detail.html', {'news': news, 'comments':comments})
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.news = news
+            comment.save()
+            return redirect('news_detail', news_id=news.id)
+    else:
+        form = CommentForm()
+
+    return render(request, 'news_detail.html', {'news': news, 'comments':comments, 'form': form})
 
 def categories(request):
     categories = Category.objects.all()

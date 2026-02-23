@@ -1,5 +1,7 @@
 from django import forms
 
+from .models import Comments
+
 class ContactForm(forms.Form):
     name = forms.CharField(
         max_length=100,
@@ -20,4 +22,23 @@ class ContactForm(forms.Form):
             attrs={'placeholder':'Ваше сообщение'}
         )
     )
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comments
+        fields = ('name', 'content')
+        widgets = {
+            'name' : forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Введите ваше имя'
+                }
+            ),
+            'content' : forms.Textarea(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder':'Введите ваш комментарий'
+                }
+            )
+        }
 
