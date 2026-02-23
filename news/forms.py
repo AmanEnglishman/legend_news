@@ -20,3 +20,4 @@ class ContactForm(forms.Form):
             attrs={'placeholder':'Ваше сообщение'}
         )
     )
+
